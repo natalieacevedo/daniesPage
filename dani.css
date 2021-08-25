@@ -73,7 +73,7 @@ left: 45%;
 #skills {
     border: red 1px solid;
     margin-top: 4%;
-    height: 100vh;
+    height: 104vh;
    
 
 }
@@ -88,11 +88,29 @@ left: 45%;
     
 }
 
+.first {
+    width: 8em;
+    display: inline-block;
+    text-align: end;
+}
+
+.derecha {
+    width: 14rem;
+    display: inline-block;
+    text-align: end;
+    margin-left: -40px;
+}
+
 #skillsheader {
     text-align: center;
 }
 
+li#indesign {
+    width: 10px;
+    text-align: right;
+    border: 1px solid black;
 
+}
 
 
 
