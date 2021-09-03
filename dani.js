@@ -2,7 +2,16 @@
 const skillsSection = document.querySelector('#skills');
 
 const coordenadasSkills = skillsSection.getBoundingClientRect();
-let fired = true;
+
+let firedLinea = true;
+
+const camurillo = document.querySelector('.camuritoentero');
+
+let camuroInitial = 100; 
+let camuroTarget = 45;
+
+let camuroTrue = true;
+
 //console.log(coordenadasSkills.top);
 //console.log(window.scrollY);
 
@@ -16,7 +25,7 @@ function liniecita(elemento, valor) {
             elemento.style.width = `${secondValor}%`;
 
         } else {
-            clearInterval(id)
+            clearInterval(id);
         }
        
     };
@@ -30,16 +39,14 @@ function liniecita(elemento, valor) {
    elemento.style.backgroundColor = '#74d04c';
     elemento.style.borderRadius = '35px';
     elemento.style.boxShadow = 'inset 0 -1px 1px rgba(255, 255, 255, 0.3)';
-    //elemento.background = '#555';
+    
    
 };
-
-//when scrolling showing the progress from zero to el numero con el scroll event listener, el profe no lo recomienda
 
 window.addEventListener('scroll', () => {
     
    
-    if (window.scrollY >= coordenadasSkills.top && fired === true) {
+    if (window.scrollY >= coordenadasSkills.top && firedLinea === true) {
         
         liniecita(document.getElementById('linea'), 70);
         liniecita(document.getElementById('lineaafter'), 60);
@@ -55,8 +62,26 @@ window.addEventListener('scroll', () => {
         liniecita(document.getElementById('webdesigner'), 50);
         
 
-        fired = false;
+        firedLinea = false;
 
     }
 
 })
+
+
+function showingCamurito() {
+    
+//poner la posicion del camurito de 100 a 45%
+ //camurillo.style.left = '95%';
+    
+    if (camuroInitial >= camuroTarget && camuroTrue) {
+        camuroInitial--;
+        camurillo.style.left = `${camuroInitial}%`;
+    } else {
+        camuroTrue = false;
+        clearInterval(intervaloCamuro);
+    }
+
+};
+
+let intervaloCamuro = setInterval(showingCamurito, 20);
