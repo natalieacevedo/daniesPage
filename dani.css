@@ -3,6 +3,7 @@ html {
   }
   *, *::before, *::after {
     box-sizing: inherit;
+   
   }
 
 section {
@@ -65,7 +66,9 @@ li {
 .camuritoentero {
 
 position: relative;
-left: 45%;
+/*left: 45%;*/
+left: 100%;
+
 
 }
 

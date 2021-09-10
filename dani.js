@@ -7,6 +7,8 @@ let firedLinea = true;
 
 const camurillo = document.querySelector('.camuritoentero');
 
+
+
 let camuroInitial = 100; 
 let camuroTarget = 45;
 
@@ -42,6 +44,11 @@ function liniecita(elemento, valor) {
     
    
 };
+
+
+//voy a hacer el efecto del camurito y las lineas con el intersection observer:
+
+/*
 
 window.addEventListener('scroll', () => {
     
@@ -85,3 +92,47 @@ function showingCamurito() {
 };
 
 let intervaloCamuro = setInterval(showingCamurito, 20);
+
+*/
+
+//INTERSECTION OBSERVER CAMURO:
+
+let intervalId;
+
+const camuroOptions = {
+    root: null,
+    threshold:1 , //esto es 10 porciento del view es de 0 a 1
+    rootMargin: '0px 80% 0px 0px'       //'0px 300px 0px'
+};
+
+
+
+function movingCamuro() {
+    console.log("movingCamuro");
+    if (camuroInitial >= camuroTarget) {
+        camuroInitial--;
+        console.log(camuroInitial); 
+        camurillo.style.left = `${camuroInitial}%`;
+    } else {
+        clearInterval(intervalId);
+    }
+};
+
+
+
+const camuroCallBack = function (entries, observer) {
+    
+    entries.forEach(entry => {
+        
+
+        if (entry.isIntersecting){ //&& camuroTrue) {
+            console.log(entry + 'natibela');
+            intervalId = setInterval(movingCamuro,10 )
+        } 
+    });
+
+};
+
+const intersectionCamuro = new IntersectionObserver(camuroCallBack, camuroOptions);
+
+intersectionCamuro.observe(camurillo);
