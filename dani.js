@@ -136,3 +136,6 @@ const camuroCallBack = function (entries, observer) {
 const intersectionCamuro = new IntersectionObserver(camuroCallBack, camuroOptions);
 
 intersectionCamuro.observe(camurillo);
+
+
+//HACIENDO LAS LINEAS CON INTERSECTION OBSERVER:
